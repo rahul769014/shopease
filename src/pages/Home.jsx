@@ -10,6 +10,7 @@ import {
   Sparkles,
   Truck,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const categories = [
   {
@@ -105,8 +106,8 @@ const Home = () => {
 
             {/* CTA */}
             <div className="mt-9 flex flex-wrap items-center gap-4">
-              <a
-                href="#collections"
+              <Link
+                to="/dashboard"
                 className="group inline-flex items-center gap-3 rounded-xl bg-orange-500 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-orange-500/20 transition-all duration-300 hover:-translate-y-1 hover:bg-orange-600 hover:shadow-xl hover:shadow-orange-500/30"
               >
                 Explore collections
@@ -114,7 +115,7 @@ const Home = () => {
                   size={17}
                   className="transition-transform duration-300 group-hover:translate-x-1"
                 />
-              </a>
+              </Link>
 
               <a
                 href="#about"

@@ -1,9 +1,7 @@
-import React from 'react'
+import ProductListing from "../components/productListing/ProductListing";
 
 const NewArrival = () => {
-  return (
-    <div>NewArrival</div>
-  )
-}
+  return <ProductListing mode="new-arrivals" />;
+};
 
-export default NewArrival
+export default NewArrival;

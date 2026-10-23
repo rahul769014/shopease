@@ -1,6 +1,75 @@
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const [allusers,setAllusers]=useState([])
+  const [formData,setFormData]=useState({
+    email:"",
+    password:""
+  })
+  const [isLoadingUsers, setIsLoadingUsers] = useState(true);
+  const navigate=useNavigate()
+
+  useEffect(() => {
+    let isMounted = true;
+
+    axios
+      .get("https://6ac67eb2bea0e72cf5c91b26.mockapi.io/users")
+      .then(({ data }) => {
+        if (isMounted) {
+          setAllusers(data);
+        }
+      })
+      .catch(() => {
+        if (isMounted) {
+          toast.error("Could not load accounts. Please try again later.");
+        }
+      })
+      .finally(() => {
+        if (isMounted) {
+          setIsLoadingUsers(false);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const handleInput=(e)=>{
+    const {name,value}=e.target
+    setFormData({...formData,[name]:value})
+  }
+
+  const handleForm=(e)=>{
+    e.preventDefault()
+    if (isLoadingUsers) {
+      toast.info("Please wait while accounts are loading.");
+      return;
+    }
+
+    const user=allusers.find((ele)=>ele.email===formData.email)
+    if(!user){
+      toast.error("Email is not Register",{position:"top-right"})
+      return
+    }
+    if(user.password !== formData.password){
+      toast.error("Invalid password",{position:"top-right"})
+      return
+    }
+    const token="udyhisnccrghughbsnuhb$#@$V76."+user.id
+    localStorage.setItem("jwt_token",JSON.stringify(token))
+    setFormData({
+      email:"",
+      password:""
+    })
+    toast.success("Login Successfully.",{position:"top-center"})
+    navigate("/dashboard")
+
+  }
+
   return (
     <main className="flex min-h-screen items-center justify-center bg-slate-50 px-4">
       <section className="w-full max-w-md rounded-2xl bg-white p-8 shadow-sm">
@@ -9,7 +78,7 @@ const Login = () => {
           Sign in to your ShopEase account.
         </p>
 
-        <form className="mt-6 space-y-4">
+        <form onSubmit={handleForm} className="mt-6 space-y-4">
           <div>
             <label
               htmlFor="email"
@@ -21,6 +90,8 @@ const Login = () => {
               id="email"
               name="email"
               type="email"
+              value={formData.email}
+              onChange={handleInput}
               autoComplete="email"
               required
               className="h-11 w-full rounded-xl border border-slate-200 px-3 text-sm outline-none focus:border-orange-400 focus:ring-4 focus:ring-orange-500/10"
@@ -37,6 +108,8 @@ const Login = () => {
             <input
               id="password"
               name="password"
+              value={formData.password}
+              onChange={handleInput}
               type="password"
               autoComplete="current-password"
               required
@@ -46,9 +119,10 @@ const Login = () => {
 
           <button
             type="submit"
+            disabled={isLoadingUsers}
             className="w-full rounded-xl bg-orange-500 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-orange-600"
           >
-            Sign in
+            {isLoadingUsers ? "Loading accounts..." : "Sign in"}
           </button>
         </form>
 
