@@ -14,13 +14,13 @@ const ProductCard = ({
     product.price - (product.price * product.discountPercentage) / 100;
   
   return (
-    <div className="group relative w-full max-w-sm overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+    <div className="group relative w-full max-w-sm overflow-hidden rounded-[1.35rem] border border-slate-200 bg-white shadow-[0_8px_28px_-20px_rgba(38,55,45,0.5)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_-20px_rgba(38,55,45,0.32)]">
       
       {/* Product Image */}
-      <div className="relative overflow-hidden bg-gray-50">
+      <div className="relative overflow-hidden bg-[#eef0e9]">
         {/* Discount Badge */}
         {product.discountPercentage > 0 && (
-          <span className="absolute left-4 top-4 z-10 rounded-full bg-red-500 px-3 py-1 text-xs font-semibold text-white shadow-sm">
+          <span className="absolute left-4 top-4 z-10 rounded-full bg-[#a8543d] px-3 py-1 text-xs font-semibold text-white shadow-sm">
             -{Math.round(product.discountPercentage)}% OFF
           </span>
         )}
@@ -29,7 +29,7 @@ const ProductCard = ({
         <button
           type="button"
           onClick={() => onToggleWishlist(product.id)}
-          className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md transition-all duration-200 hover:scale-110"
+          className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/95 shadow-md transition-all duration-200 hover:scale-110"
           aria-label={
             isWishlisted ? "Remove from wishlist" : "Add to wishlist"
           }
@@ -39,7 +39,7 @@ const ProductCard = ({
             size={20}
             className={
               isWishlisted
-                ? "fill-red-500 text-red-500"
+                ? "fill-[#a8543d] text-[#a8543d]"
                 : "text-gray-600"
             }
           />
@@ -64,7 +64,7 @@ const ProductCard = ({
             {product.brand}
           </span>
 
-          <span className="rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-500">
+          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-600">
             {product.category}
           </span>
         </div>
@@ -81,7 +81,7 @@ const ProductCard = ({
 
         {/* Rating */}
         <div className="mt-4 flex items-center gap-2">
-          <div className="flex items-center gap-1 rounded-md bg-green-50 px-2 py-1">
+          <div className="flex items-center gap-1 rounded-md bg-emerald-50 px-2 py-1">
             <Star
               size={14}
               className="fill-yellow-400 text-yellow-400"
@@ -127,7 +127,7 @@ const ProductCard = ({
           {isInCart ? (
             <Link
               to="/cart"
-              className="flex items-center justify-center gap-2 rounded-xl border-2 border-purple-600 px-3 py-3 text-sm font-semibold text-purple-600 transition-all duration-200 hover:bg-purple-50 active:scale-95"
+              className="flex items-center justify-center gap-2 rounded-xl border border-purple-600 px-3 py-3 text-sm font-semibold text-purple-600 transition-all duration-200 hover:bg-purple-50 active:scale-95"
             >
               <ShoppingCart size={18} />
               Go to cart
@@ -137,7 +137,7 @@ const ProductCard = ({
               type="button"
               disabled={isAddDisabled}
               onClick={() => addtoCart(product)}
-              className="flex items-center justify-center gap-2 rounded-xl border-2 border-purple-600 px-3 py-3 text-sm font-semibold text-purple-600 transition-all duration-200 hover:bg-purple-50 active:scale-95 disabled:cursor-wait disabled:opacity-60"
+              className="flex items-center justify-center gap-2 rounded-xl border border-purple-600 px-3 py-3 text-sm font-semibold text-purple-600 transition-all duration-200 hover:bg-purple-50 active:scale-95 disabled:cursor-wait disabled:opacity-60"
             >
               <ShoppingCart size={18} />
               {isAddingToCart ? "Adding..." : "Add to Cart"}

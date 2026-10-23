@@ -92,7 +92,7 @@ const Home = () => {
               <span>Discover something you love</span>
             </div>
 
-            <h1 className="text-5xl font-black leading-[1.02] tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">
+            <h1 className="text-4xl font-black leading-[1.04] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
               Shopping made
               <span className="block bg-gradient-to-r from-orange-500 to-rose-500 bg-clip-text text-transparent">
                 simple & joyful.
@@ -154,15 +154,15 @@ const Home = () => {
           {/* Hero Visual */}
           <div className="relative mx-auto flex h-[420px] w-full max-w-lg items-center justify-center sm:h-[500px]">
             {/* Decorative circle */}
-            <div className="absolute h-[300px] w-[300px] rounded-full bg-orange-200/60 sm:h-[390px] sm:w-[390px]" />
+            <div className="absolute h-[300px] w-[300px] rounded-full bg-emerald-100/80 sm:h-[390px] sm:w-[390px]" />
 
             {/* Decorative blobs */}
-            <div className="absolute right-[5%] top-[8%] h-24 w-24 rotate-12 rounded-3xl bg-rose-200/70 transition-transform duration-500 hover:rotate-6" />
+            <div className="absolute right-[5%] top-[8%] h-24 w-24 rotate-12 rounded-3xl bg-orange-200/70 transition-transform duration-500 hover:rotate-6" />
 
             <div className="absolute bottom-[7%] left-[5%] h-20 w-20 rounded-full bg-yellow-200 transition-transform duration-500 hover:scale-110" />
 
             {/* Main card */}
-            <div className="group relative flex h-72 w-72 -rotate-3 flex-col items-center justify-center overflow-visible rounded-[2.5rem] bg-gradient-to-br from-orange-500 via-orange-400 to-rose-400 text-white shadow-2xl shadow-orange-900/20 transition-transform duration-500 hover:rotate-0 hover:scale-[1.02] sm:h-80 sm:w-80">
+            <div className="group relative flex h-72 w-72 -rotate-2 flex-col items-center justify-center overflow-visible rounded-[1.75rem] bg-gradient-to-br from-purple-700 via-purple-600 to-orange-500 text-white shadow-2xl shadow-slate-900/20 transition-transform duration-500 hover:rotate-0 hover:scale-[1.02] sm:h-80 sm:w-80">
               {/* Inner shine */}
               <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-white/20 via-transparent to-transparent" />
 

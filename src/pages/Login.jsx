@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ShoppingBag } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -71,9 +72,22 @@ const Login = () => {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-50 px-4">
-      <section className="w-full max-w-md rounded-2xl bg-white p-8 shadow-sm">
-        <h1 className="text-2xl font-bold text-slate-900">Login</h1>
+    <main className="auth-page flex min-h-screen items-center justify-center px-4 py-12">
+      <section className="auth-card w-full max-w-md bg-white p-8 sm:p-10">
+        <div className="mb-8 flex items-center gap-3">
+          <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-600 text-white shadow-lg shadow-purple-900/15">
+            <ShoppingBag size={23} />
+          </span>
+          <div>
+            <p className="text-sm font-bold tracking-tight text-slate-900">
+              ShopEase
+            </p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+              Everything you love
+            </p>
+          </div>
+        </div>
+        <h1 className="text-3xl font-semibold text-slate-900">Welcome back</h1>
         <p className="mt-2 text-sm text-slate-600">
           Sign in to your ShopEase account.
         </p>
@@ -94,7 +108,7 @@ const Login = () => {
               onChange={handleInput}
               autoComplete="email"
               required
-              className="h-11 w-full rounded-xl border border-slate-200 px-3 text-sm outline-none focus:border-orange-400 focus:ring-4 focus:ring-orange-500/10"
+              className="h-12 w-full rounded-xl border border-slate-200 bg-slate-50/70 px-3 text-sm outline-none transition focus:border-purple-500 focus:bg-white focus:ring-4 focus:ring-purple-500/10"
             />
           </div>
 
@@ -113,14 +127,14 @@ const Login = () => {
               type="password"
               autoComplete="current-password"
               required
-              className="h-11 w-full rounded-xl border border-slate-200 px-3 text-sm outline-none focus:border-orange-400 focus:ring-4 focus:ring-orange-500/10"
+              className="h-12 w-full rounded-xl border border-slate-200 bg-slate-50/70 px-3 text-sm outline-none transition focus:border-purple-500 focus:bg-white focus:ring-4 focus:ring-purple-500/10"
             />
           </div>
 
           <button
             type="submit"
             disabled={isLoadingUsers}
-            className="w-full rounded-xl bg-orange-500 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-orange-600"
+            className="w-full rounded-xl bg-purple-600 px-4 py-3.5 text-sm font-semibold text-white shadow-lg shadow-purple-900/10 transition hover:bg-purple-700"
           >
             {isLoadingUsers ? "Loading accounts..." : "Sign in"}
           </button>
@@ -130,7 +144,7 @@ const Login = () => {
           Don&apos;t have an account?{" "}
           <Link
             to="/register"
-            className="font-semibold text-orange-500 hover:text-orange-600"
+            className="font-semibold text-purple-600 hover:text-purple-700"
           >
             Register
           </Link>
